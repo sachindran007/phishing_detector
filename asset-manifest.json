@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/phishing_detector/static/css/main.4ff9e263.css",
-    "main.js": "/phishing_detector/static/js/main.d2c4ec00.js",
+    "main.js": "/phishing_detector/static/js/main.030d6b10.js",
     "index.html": "/phishing_detector/index.html",
     "main.4ff9e263.css.map": "/phishing_detector/static/css/main.4ff9e263.css.map",
-    "main.d2c4ec00.js.map": "/phishing_detector/static/js/main.d2c4ec00.js.map"
+    "main.030d6b10.js.map": "/phishing_detector/static/js/main.030d6b10.js.map"
   },
   "entrypoints": [
     "static/css/main.4ff9e263.css",
-    "static/js/main.d2c4ec00.js"
+    "static/js/main.030d6b10.js"
   ]
 }
