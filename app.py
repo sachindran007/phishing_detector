@@ -54,7 +54,7 @@ def analyze_with_gemini(url, features):
     if not USE_GEMINI: 
         return {"verdict": "Error", "reason": "AI is not configured. Please check the server's .env file."}
     try:
-        model = genai.GenerativeModel('gemini-pro')
+        model = genai.GenerativeModel('gemini-2.5-flash')
         feature_string = "\n".join([f"- {key}: {value}" for key, value in features.items()])
         prompt = f'''
         As a cybersecurity expert, analyze the following URL and classify it into ONE of the four following categories: "Phishing Detected", "High Risk", "Suspicious", or "Looks Safe".

@@ -19,7 +19,7 @@ function App() {
 
     try {
       // Correct HTTPS URL for the local backend
-      const apiUrl = 'https://127.0.0.1:5000/analyze'; 
+      const apiUrl = 'https://phishing-detector-backend.onrender.com/analyze'; 
 
       const response = await fetch(apiUrl, {
         method: 'POST',
