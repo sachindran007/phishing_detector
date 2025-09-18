@@ -114,7 +114,7 @@ def analyze_with_gemini(url, features):
         Evidence:
         {feature_string}
         A site with a positive "Monitoring Reputation" is a strong sign of legitimacy.
-        If the 'Real-Time Status' starts with 'Online', mention in your 'reason' that the website is confirmed to be live.
+        If the 'Real-Time Status' evidence starts with 'Online', mention in your 'reason' that the website is confirmed to be live.
         Respond ONLY with a valid JSON object with two keys: "verdict" and "reason".
         '''
         response = model.generate_content(prompt)
@@ -124,9 +124,15 @@ def analyze_with_gemini(url, features):
         print(f"Error calling Gemini API: {e}")
         return {"verdict": "Suspicious", "reason": "AI analysis failed."}
 
-# --- Flask App Setup & Endpoint (This is the critical part) ---
+# --- Flask App Setup & Endpoint (This is the critical fix) ---
 app = Flask(__name__)
-allowed_origins = ["https://localhost:3000", "https://phishing-detector-api-d3mu.onrender.com"]
+
+# Add your new Netlify URL to the list of allowed origins
+allowed_origins = [
+    "https://localhost:3000",                   # For local development
+    "https://phishing-url-checker.netlify.app", # YOUR LIVE FRONTEND
+    "https://phishing-detector-api-d3mu.onrender.com"  # Your backend's own URL
+]
 CORS(app, resources={r"/analyze": {"origins": allowed_origins}})
 
 @app.route('/analyze', methods=['POST'])
@@ -142,7 +148,7 @@ def analyze():
         
     ai_result = analyze_with_gemini(full_url_for_analysis, features)
     
-    # THIS IS THE LOGIC THAT MUST BE RUNNING ON YOUR SERVER
+    # This ensures all tool findings are sent to the frontend
     findings = [{"description": f"AI Analysis: {ai_result['reason']}"}]
     for key, value in features.items():
         findings.append({"description": f"{key}: {value}"})
@@ -150,7 +156,7 @@ def analyze():
     return jsonify({
         "url": raw_url, 
         "verdict": ai_result['verdict'], 
-        "findings": findings # Return the FULL list
+        "findings": findings
     })
 
 if __name__ == '__main__':
