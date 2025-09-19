@@ -1,0 +1,9 @@
+Flask
+Flask-Cors
+gunicorn
+python-dotenv
+google-generativeai
+python-whois
+requests
+beautifulsoup4
+pyOpenSSL

@@ -1,0 +1,63 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+header { text-align: center; margin-bottom: 30px; }
+header h1 { color: #2c3e50; }
+main {
+    width: 100%;
+    max-width: 700px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+.analyzer-container { display: flex; gap: 10px; margin-bottom: 20px; }
+input {
+    flex-grow: 1; padding: 12px; font-size: 16px;
+    border: 1px solid #ccc; border-radius: 5px;
+}
+button {
+    padding: 12px 20px; font-size: 16px; background-color: #3498db;
+    color: white; border: none; border-radius: 5px; cursor: pointer;
+    transition: background-color 0.3s;
+}
+button:hover { background-color: #2980b9; }
+button:disabled { background-color: #bdc3c7; cursor: not-allowed; }
+.error-message {
+    color: #e74c3c; background-color: #fadbd8;
+    padding: 10px; border-radius: 5px; text-align: center; margin-bottom: 20px;
+}
+.loading { text-align: center; padding: 20px; color: #555; }
+.spinner {
+    border: 4px solid #f3f3f3; border-top: 4px solid #3498db;
+    border-radius: 50%; width: 40px; height: 40px;
+    animation: spin 1s linear infinite; margin: 0 auto 10px auto;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+#resultsContainer { border-top: 1px solid #eee; padding-top: 20px; }
+#verdict {
+    padding: 15px; border-radius: 5px; text-align: center;
+    color: white; font-size: 24px; text-transform: uppercase; letter-spacing: 1px;
+}
+#findingsList { list-style-type: none; padding: 0; }
+#findingsList li {
+    background-color: #ecf0f1;
+    border-left: 5px solid #bdc3c7;
+    padding: 10px; margin-bottom: 10px; border-radius: 3px;
+}
+.verdict-looks-safe { background-color: #2ecc71; }
+.verdict-suspicious { background-color: #f39c12; }
+.verdict-high-risk { background-color: #e67e22; }
+.verdict-phishing-detected { background-color: #e74c3c; }
+.verdict-error { background-color: #95a5a6; }
+
+footer { text-align: center; margin-top: 30px; font-size: 14px; color: #777; }
